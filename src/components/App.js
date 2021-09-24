@@ -1,22 +1,9 @@
 import "../styles/App.css";
-import data from "../data/contacts.json";
+import initialData from "../data/contacts.json";
 import { useState } from "react";
 
 function App() {
-  const htmlClubList = data.map((oneClub, index) => (
-    <li key={index} className="club__item">
-      <p className="club__name">
-        #{index}: {oneClub.name}
-      </p>
-      <p className="club__weekday">
-        Abierto entre semana: {oneClub.openOnWeekdays}
-      </p>
-      <p className="club__weekend">
-        Abierto el fin de semana: {oneClub.openOnWeekend}
-      </p>
-    </li>
-  ));
-
+  const [data, setData] = useState(initialData);
   const [newName, setNewName] = useState("");
   const [newWeekday, setWeekday] = useState("");
   const [newWeekend, setWeekend] = useState("");
@@ -35,16 +22,28 @@ function App() {
 
   const handleClick = (ev) => {
     ev.preventDefault();
-    console.log("click");
+    const newClub = {
+      name: newName,
+      openOnWeekdays: newWeekday,
+      openOnWeekend: newWeekend,
+    };
+
+    setData([...data, newClub]);
   };
 
-  const newClub = {
-    name: newName,
-    openOnWeekdays: newWeekday,
-    openOnWeekend: newWeekend,
-  };
-
-  console.log(newClub);
+  const htmlClubList = data.map((oneClub, index) => (
+    <li key={index} className="club__item">
+      <p className="club__name">
+        #{index}: {oneClub.name}
+      </p>
+      <p className="club__weekday">
+        Abierto entre semana: {oneClub.openOnWeekdays}
+      </p>
+      <p className="club__weekend">
+        Abierto el fin de semana: {oneClub.openOnWeekend}
+      </p>
+    </li>
+  ));
 
   return (
     <>
