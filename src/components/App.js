@@ -5,8 +5,8 @@ import { useState } from "react";
 function App() {
   const [data, setData] = useState(initialData);
   const [newName, setNewName] = useState("");
-  const [newWeekday, setWeekday] = useState("");
-  const [newWeekend, setWeekend] = useState("");
+  const [newWeekday, setWeekday] = useState(false);
+  const [newWeekend, setWeekend] = useState(false);
 
   const handleNewName = (ev) => {
     setNewName(ev.currentTarget.value);
@@ -14,6 +14,7 @@ function App() {
 
   const handleWeekday = (ev) => {
     setWeekday(ev.currentTarget.checked);
+    console.log(setWeekday);
   };
 
   const handleWeekend = (ev) => {
@@ -37,10 +38,10 @@ function App() {
         #{index}: {oneClub.name}
       </p>
       <p className="club__weekday">
-        Abierto entre semana: {oneClub.openOnWeekdays}
+        Abierto entre semana: {oneClub.openOnWeekdays ? "Sí" : "No"}
       </p>
       <p className="club__weekend">
-        Abierto el fin de semana: {oneClub.openOnWeekend}
+        Abierto el fin de semana: {oneClub.openOnWeekend ? "Sí" : "No"}
       </p>
     </li>
   ));
@@ -68,6 +69,7 @@ function App() {
             type="checkbox"
             id="weekday"
             name="weekday"
+            checked={newWeekday}
             onChange={handleWeekday}
           />
           <label htmlFor="weekend">¿Abre los fines de semana?</label>
@@ -75,6 +77,7 @@ function App() {
             type="checkbox"
             id="weekend"
             name="weekend"
+            checked={newWeekend}
             onChange={handleWeekend}
           />
           <input
