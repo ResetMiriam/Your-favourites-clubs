@@ -1,0 +1,19 @@
+.club__list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.club__item {
+  border: black 2px solid;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.new-club__form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
