@@ -33,6 +33,9 @@ function App() {
     };
 
     setData([...data, newClub]);
+    setNewName("");
+    setWeekday(false);
+    setWeekend(false);
   };
 
   const htmlClubList = () => {
