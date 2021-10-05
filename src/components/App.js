@@ -38,6 +38,12 @@ function App() {
     setWeekend(false);
   };
 
+  const handleDelete = (ev) => {
+    ev.preventDefault();
+    data.splice(ev.currentTarget.parentElement.id, 1);
+    setData([...data]);
+  };
+
   const htmlClubList = () => {
     return data
       .filter((oneClub) => {
@@ -60,7 +66,7 @@ function App() {
             <p className="club__weekend">
               Abierto el fin de semana: {oneClub.openOnWeekend ? "Sí" : "No"}
             </p>
-            <button>X</button>
+            <button onClick={handleDelete}>X</button>
           </li>
         );
       });
