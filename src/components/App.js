@@ -1,4 +1,4 @@
-import "../styles/App.css";
+import "../styles/App.scss";
 import initialData from "../data/contacts.json";
 import { useState } from "react";
 
@@ -57,16 +57,20 @@ function App() {
       .map((oneClub, index) => {
         return (
           <li key={index} className="club__item">
+            {" "}
             <p className="club__name">
               #{index}: {oneClub.name}
             </p>
-            <p className="club__weekday">
+            <p className="club__weekday club__description">
               Abierto entre semana: {oneClub.openOnWeekdays ? "Sí" : "No"}
             </p>
-            <p className="club__weekend">
+            <p className="club__weekend club__description">
               Abierto el fin de semana: {oneClub.openOnWeekend ? "Sí" : "No"}
-            </p>
-            <button onClick={handleDelete}>X</button>
+            </p>{" "}
+            <span
+              onClick={handleDelete}
+              className="club__delete icon fas fa-times"
+            ></span>
           </li>
         );
       });
@@ -75,6 +79,8 @@ function App() {
     <>
       <header className="header">
         <h1 className="header__title">Mis Clubs</h1>
+      </header>
+      <main>
         <form action="">
           <select value={filter} onChange={handleFilter}>
             <option value="all">Todos</option>
@@ -82,8 +88,6 @@ function App() {
             <option value="openOnWeekends">Abre los fines de semana</option>
           </select>
         </form>
-      </header>
-      <main>
         <ul className="club__list">{htmlClubList()}</ul>
         <form className="new-club__form">
           <h2 className="new-club__title">Añade un nuevo club</h2>
