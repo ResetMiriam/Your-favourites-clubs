@@ -1,25 +1,46 @@
+@import "core/Variables";
+@import "core/Reset";
+
 body {
   font-family: "Raleway", sans-serif;
-  background-color: #d9b01c;
-  padding: 0 30px 30px 30px;
+  background-color: $background__color;
+  padding: 20px;
+  box-sizing: border-box;
+  @media all and (min-width: 800px) {
+    padding: 20px 40px 20px 80px;
+  }
 }
 
 .header__title {
   font-family: "Ephesis";
   font-size: 4rem;
-  color: #32d9bf;
+  color: $title__color;
   text-shadow: 2px 1px 2px black;
-  padding-top: 0px;
+  padding: 30px 0;
 }
 
 .club {
+  &__filter {
+    background: transparent;
+    border: solid $borders__color 3px;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.2rem;
+    outline: none;
+    &:focus {
+      background-color: $borders__color;
+      color: white;
+    }
+  }
   &__item {
-    border: #8c6f04 3px solid;
+    border: $borders__color 3px solid;
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     align-items: center;
     margin: 5px;
     padding: 15px;
+    height: 170px;
+    width: 300px;
   }
 
   &__delete {
@@ -27,32 +48,104 @@ body {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    border: 3px solid #8c6f04;
+    border: 3px solid $borders__color;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all ease 0.5s;
     &:hover {
-      background-color: #8c6f04;
+      background-color: $borders__color;
     }
   }
 
   &__list {
     display: flex;
     flex-wrap: wrap;
-    width: 80%;
+    justify-content: flex-start;
+    padding: 20px 0;
+    border-bottom: 4px dotted $title__color;
   }
   &__name {
     font-weight: bold;
     font-size: 1.4rem;
-    color: #8c0b8c;
+    color: $h4__color;
+    text-shadow: 0.5px 0.25px 0.5px black;
+    max-width: 90%;
   }
 }
 
 .new-club {
+  &__title {
+    font-family: "Ephesis";
+    font-size: 3rem;
+    color: $h2__color;
+    text-shadow: 2px 1px 2px rgb(32, 30, 30);
+    padding-top: 18px;
+  }
+
   &__form {
     display: flex;
     flex-direction: column;
     width: 80%;
+    padding: 15px;
+    @media all and (min-width: 800px) {
+      width: 40%;
+    }
   }
+
+  &__input {
+    background: transparent;
+    border: solid $borders__color 3px;
+    font-family: "Raleway", sans-serif;
+    font-size: 1.2rem;
+    min-width: 200px;
+    &:hover {
+      background-color: $borders__color;
+    }
+  }
+
+  &__btn {
+    background: transparent;
+    border: solid $borders__color 3px;
+    font-family: "Raleway", sans-serif;
+    outline: none;
+    &:hover {
+      background-color: $borders__color;
+    }
+  }
+  &__text {
+    padding: 10px 0;
+  }
+}
+input[type="checkbox"] + label:before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  float: left;
+  margin: 0.5em 0.5em 0.5em;
+  border: 4px solid $borders__color;
+}
+input[type="checkbox"]:checked + label:before {
+  border-color: $borders__color;
+}
+
+input[type="checkbox"]:checked + label:after {
+  content: "";
+  width: 12px;
+  height: 6px;
+  border: 4px solid $h4__color;
+  float: left;
+  margin-left: -1.6em;
+  border-right: 0;
+  border-top: 0;
+  margin-top: 0.9em;
+  transform: rotate(-55deg);
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+input[type="checkbox"] + label {
+  line-height: 2.1em;
 }

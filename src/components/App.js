@@ -58,9 +58,9 @@ function App() {
         return (
           <li key={index} className="club__item">
             {" "}
-            <p className="club__name">
+            <h4 className="club__name">
               #{index}: {oneClub.name}
-            </p>
+            </h4>
             <p className="club__weekday club__description">
               Abierto entre semana: {oneClub.openOnWeekdays ? "Sí" : "No"}
             </p>
@@ -82,42 +82,58 @@ function App() {
       </header>
       <main>
         <form action="">
-          <select value={filter} onChange={handleFilter}>
+          <select
+            className="club__filter"
+            value={filter}
+            onChange={handleFilter}
+          >
             <option value="all">Todos</option>
             <option value="openOnWeekDays">Abre entre semana</option>
             <option value="openOnWeekends">Abre los fines de semana</option>
           </select>
         </form>
-        <ul className="club__list">{htmlClubList()}</ul>
+        <ul className="club__list">{htmlClubList()}</ul>{" "}
+        <h2 className="new-club__title">Añade un nuevo club</h2>
         <form className="new-club__form">
-          <h2 className="new-club__title">Añade un nuevo club</h2>
-          <label htmlFor="name"> Nombre del club</label>
+          <label htmlFor="name" className="new-club__text">
+            {" "}
+            Nombre del club
+          </label>
           <input
             className="new-club__input"
+            required
             type="text"
             name="name"
             id="name"
             onChange={handleNewName}
             value={newName}
           />
-          <label htmlFor="weekday">¿Abre entre semana?</label>
+
           <input
+            className="new-club__checkbox"
             type="checkbox"
             id="weekday"
             name="weekday"
             checked={newWeekday}
             onChange={handleWeekday}
           />
-          <label htmlFor="weekend">¿Abre los fines de semana?</label>
+          <label htmlFor="weekday" className="new-club__text">
+            ¿Abre entre semana?
+          </label>
+
           <input
+            className="new-club__checkbox"
             type="checkbox"
             id="weekend"
             name="weekend"
             checked={newWeekend}
             onChange={handleWeekend}
           />
+          <label htmlFor="weekend" className="new-club__text">
+            ¿Abre los fines de semana?
+          </label>
           <input
-            className="new-contact__btn"
+            className="new-club__input"
             type="submit"
             value="Añadir"
             onClick={handleClick}
