@@ -2,7 +2,7 @@
 
 ### Una apasionada desarrolladora frontend viviendo en Madrid
 
-Este es el ejercicio realizado de cara a la evaluación intermedia de Adalab, correspondiente con el Módulo 3: React.
+Este proyecto realizado con **React** te permite guardar tus locales favoritos, pudiendo filtrar cuales abren entre semana o los fines de semana.
 
 ## 📄 ¿Qué necesitas tener instalado para ejecutar este proyecto?
 
